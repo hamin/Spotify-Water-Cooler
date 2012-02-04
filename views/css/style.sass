@@ -1,0 +1,597 @@
+/*
+ *style.css contains a reset, font normalization and some base styles.
+ *
+ *credit is left where credit is due.
+ *additionally, much inspiration was taken from these projects:
+ *  yui.yahooapis.com/2.8.1/build/base/base.css
+ *  camendesign.com/design/
+ *  praegnanz.de/weblog/htmlcssjs-kickstart
+
+/*
+ *html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+ *v1.4 2009-07-27 | Authors: Eric Meyer & Richard Clark
+ *html5doctor.com/html-5-reset-stylesheet/
+@font-face
+  font-family: 'MuseoSlab500'
+  src: url('/js/museo_slab_500-webfont.eot')
+  src: url('/js/museo_slab_500-webfont.eot?#iefix') format('embedded-opentype'), url('/js/mmuseo_slab_500-webfont.woff') format('woff'), url('/js/mmuseo_slab_500-webfont.ttf') format('truetype'), url('/js/mmuseo_slab_500-webfont.svg#MuseoSlab500') format('svg')
+  font-weight: normal
+  font-style: normal
+
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video
+  margin: 0
+  padding: 0
+  border: 0
+  outline: 0
+  font-size: 100%
+  vertical-align: baseline
+  background: transparent
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section
+  display: block
+
+nav ul
+  list-style: none
+
+blockquote, q
+  quotes: none
+
+blockquote
+  &:before, &:after
+    content: ''
+    content: none
+
+q
+  &:before, &:after
+    content: ''
+    content: none
+
+a
+  margin: 0
+  padding: 0
+  font-size: 100%
+  vertical-align: baseline
+  background: transparent
+
+ins
+  background-color: #ff9
+  color: #000
+  text-decoration: none
+
+mark
+  background-color: #ff9
+  color: #000
+  font-style: italic
+  font-weight: bold
+
+del
+  text-decoration: line-through
+
+abbr[title], dfn[title]
+  border-bottom: 1px dotted
+  cursor: help
+
+/* tables still need cellspacing="0" in the markup
+
+table
+  border-collapse: collapse
+  border-spacing: 0
+
+hr
+  display: block
+  height: 1px
+  border: 0
+  border-top: 1px solid #ccc
+  margin: 1em 0
+  padding: 0
+
+input, select
+  vertical-align: middle
+
+/* END RESET CSS
+
+/*
+ *fonts.css from the YUI Library: developer.yahoo.com/yui/
+ *          Please refer to developer.yahoo.com/yui/fonts/ for font sizing percentages
+ *
+ *There are three custom edits:
+   * remove arial, helvetica from explicit font stack
+   * we normalize monospace styles ourselves
+   * table font-size is reset in the HTML5 reset above so there is no need to repeat
+
+/* hack retained to preserve specificity
+body
+  font: 13px/1.231 sans-serif
+  *font-size: small
+
+select, input, textarea, button
+  font: 99% sans-serif
+
+/* normalize monospace sizing
+ * meyerweb.com/eric/thoughts/2010/02/12/fixed-monospace-sizing/
+
+code, pre, kbd, samp
+  font-family: monospace, serif
+
+/*
+ * minimal base styles
+
+/* #444 looks better than black: twitter.com/H_FJ/statuses/11800719859
+
+body, select, input, textarea
+  color: #444
+  /* set your base font here, to apply evenly
+  /* font-family: Georgia, serif
+
+/* Headers (h1,h2,etc) have no default font-size or margin,
+ * you'll want to define those yourself.
+
+/* www.aestheticallyloyal.com/public/optimize-legibility/
+
+h1, h2, h3, h4, h5, h6
+  font-weight: bold
+
+html
+  /* always force a scrollbar in non-IE
+  overflow-y: scroll
+
+
+ul, ol
+  margin-left: 1.8em
+
+ol
+  list-style-type: decimal
+
+nav ul, nav li
+  margin: 0
+
+
+small
+  font-size: 85%
+
+strong, th
+  font-weight: bold
+
+td
+  vertical-align: top
+  img
+    vertical-align: top
+
+sub
+  vertical-align: sub
+  font-size: smaller
+
+sup
+  vertical-align: super
+  font-size: smaller
+
+pre
+  padding: 15px
+  /* www.pathf.com/blogs/2008/05/formatting-quoted-code-in-blog-posts-css21-white-space-pre-wrap/
+  /* CSS2
+  white-space: pre
+  /* CSS 2.1
+  white-space: pre-wrap
+  /* CSS 3 (and 2.1 as well, actually)
+  white-space: pre-line
+  /* IE
+  word-wrap: break-word
+
+/* thnx ivannikolic!
+/* www.sitepoint.com/blogs/2010/08/20/ie-remove-textarea-scrollbars/
+textarea
+  overflow: auto
+
+/* thnx ivannikolic!
+.ie6 legend, .ie7 legend
+  margin-left: -7px
+
+/* align checkboxes, radios, text inputs with their label
+ * by: Thierry Koblentz tjkdesign.com/ez-css/css/base.css
+
+input
+  &[type="radio"]
+    vertical-align: text-bottom
+  &[type="checkbox"]
+    vertical-align: bottom
+
+.ie7 input[type="checkbox"]
+  vertical-align: baseline
+
+.ie6 input
+  vertical-align: text-bottom
+
+/* hand cursor on clickable input elements
+
+label
+  cursor: pointer
+
+input
+  &[type=button], &[type=submit]
+    cursor: pointer
+button
+  cursor: pointer
+
+/* webkit browsers add a 2px margin outside the chrome of form elements
+button, input, select, textarea
+  margin: 0
+
+/* colors for form validity
+input, textarea
+  &:valid
+  &:invalid
+    border-radius: 1px
+    -moz-box-shadow: 0px 0px 5px red
+    -webkit-box-shadow: 0px 0px 5px red
+    box-shadow: 0px 0px 5px red
+
+.no-boxshadow input:invalid, .no-boxshadow textarea:invalid
+  background-color: #f0dddd
+
+/* These selection declarations have to be separate.
+ * No text-shadow: twitter.com/miketaylr/status/12228805301
+ * Also: hot pink.
+
+::-moz-selection
+  background: #FF5E99
+  color: #fff
+  text-shadow: none
+\::selection
+  background: #FF5E99
+  color: #fff
+  text-shadow: none
+
+/*  j.mp/webkit-tap-highlight-color
+
+a:link
+  -webkit-tap-highlight-color: #FF5E99
+
+/* make buttons play nice in IE:
+ * www.viget.com/inspire/styling-the-button-element-in-internet-explorer/
+
+button
+  width: auto
+  overflow: visible
+
+/* bicubic resizing for non-native sized IMG:
+ * code.flickr.com/blog/2008/11/12/on-ui-quality-the-little-things-client-side-image-resizing/
+
+.ie7 img
+  -ms-interpolation-mode: bicubic
+
+/*
+ * Non-semantic helper classes
+
+/* for image replacement
+
+.ir
+  display: block
+  text-indent: -999em
+  overflow: hidden
+  background-repeat: no-repeat
+  text-align: left
+  direction: ltr
+
+/* Hide for both screenreaders and browsers
+ * css-discuss.incutio.com/wiki/Screenreader_Visibility
+
+.hidden
+  display: none
+  visibility: hidden
+
+/* Hide only visually, but have it available for screenreaders
+ * www.webaim.org/techniques/css/invisiblecontent/
+ * Solution from: j.mp/visuallyhidden - Thanks Jonathan Neal!
+
+.visuallyhidden
+  position: absolute !important
+  /* IE6, IE7
+  clip: rect(1px 1px 1px 1px)
+  clip: rect(1px, 1px, 1px, 1px)
+
+/* Hide visually and from screenreaders, but maintain layout
+
+.invisible
+  visibility: hidden
+
+/* >> The Magnificent CLEARFIX: Updated to prevent margin-collapsing on child elements << j.mp/bestclearfix
+
+.clearfix
+  zoom: 1
+  &:before, &:after
+    content: "\0020"
+    display: block
+    height: 0
+    visibility: hidden
+  &:after
+    clear: both
+
+
+/* Primary Styles
+ * Author:
+
+body
+  background: url('../images/bg.png') repeat scroll 0 0
+  color: #6a6a6a
+  padding-bottom: 40px
+
+a
+  color: #0175be
+  text-decoration: none
+
+p
+  margin-bottom: 0.5em
+
+header
+  background: url('../images/header_bg.png') repeat-x scroll 0 0
+  color: #feb3bb
+  font: 1.15em/1.5 'MuseoSlab500', 'Helvetica Neue', Helvetica, arial, sans-serif
+  padding-bottom: 8px
+  position: relative
+  top: 0
+  width: 100%
+  z-index: 100
+
+.italic
+  font-style: italic
+
+.floatright
+  float: right
+  text-align: right
+
+.center
+  text-align: center
+
+.right
+  text-align: right
+
+.left
+  text-align: left
+
+#banner
+  background: #fff
+  border: 1px solid #d7e2e4
+  font: italic 1em/1.5 Georgia, 'Times New Roman', times, serif
+  padding: 15px 10px 5px 10px
+  position: relative
+  top: -10px
+  width: 200px
+  z-index: 30
+
+header .container_12
+  & a
+    color: #fff
+    text-decoration: none
+  & .grid_6.floatright
+    padding-top: 17px
+
+#main
+  margin-top: 3em
+
+.borders
+  background: #fff
+  border: 1px solid #e4e1e1
+  margin-bottom: 3em
+  padding: 15px 0
+
+h1, h2, h3, h4, h5
+  color: #383636
+
+h1
+  text-indent: -9999em
+  & a
+    background: no-repeat scroll 0 0
+    display: block
+    height: 25px
+    margin: 16px 0
+    width: 175px
+
+h2
+  font-size: 225%
+  letter-spacing: -1px
+  margin-bottom: 0.4em
+  text-transform: uppercase
+
+h2.title
+  display: block
+  float: left
+
+h2 + span.like
+  display: block
+  float: right
+  font-size: 14px
+  font-weight: bold
+  margin-top: 11px
+
+  img
+    float: left
+    margin-right: 5px
+
+div.photo
+  text-align: center
+
+span.tagline
+  color: #7d7c7c
+  display: block
+  font-size: 90%
+  margin-bottom: 2em
+
+h3
+  font-size: 175%
+  margin-bottom: 0.5em
+
+h4
+  font-size: 130%
+
+/* Forms
+ul.form
+  list-style: none
+  margin: 0
+  padding: 0
+
+  & li
+    margin: 15px 0
+
+    & label
+      clear: left
+      display: block
+      float: left
+      padding-top: 5px
+      width: 90px
+
+    & input[type="text"], & input[type="password"], & input[type="email"], & input[type="phone"], & textarea
+      font: 1em/1.5 'Helvetica Neue', Helvetica, arial, sans-serif
+      padding: 4px
+
+ul.form.margin
+  margin-top: 15px
+/*
+ * Media queries for responsive design
+ * These follow after primary styles so they will successfully override.
+
+
+@media all and (orientation:portrait)
+  /* Style adjustments for portrait mode goes here
+
+
+@media all and (orientation:landscape)
+  /* Style adjustments for landscape mode goes here
+
+
+/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)
+ * Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/
+@media screen and (max-device-width: 480px)
+  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you
+   * j.mp/textsizeadjust
+   * html
+   *   -webkit-text-size-adjust: none
+   *   -ms-text-size-adjust: none
+
+
+/*
+  * print styles
+  * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/
+
+@media print
+  *
+    background: transparent !important
+    color: #444 !important
+    text-shadow: none !important
+  a
+    color: #444 !important
+    text-decoration: underline
+    &:visited
+      color: #444 !important
+      text-decoration: underline
+    &:after
+      content: " (" attr(href) ")"
+  abbr:after
+    content: " (" attr(title) ")"
+  .ir a:after
+    content: ""
+  pre, blockquote
+    border: 1px solid #999
+    page-break-inside: avoid
+  img, tr
+    page-break-inside: avoid
+  /* css-discuss.incutio.com/wiki/Printing_Tables
+  thead
+    display: table-header-group
+  @page
+    margin: 0.5cm
+
+  p, h2, h3
+    orphans: 3
+    widows: 3
+  h2, h3
+    page-break-after: avoid
+
+@media all
+  #spotify-search ul
+    width: 100%
+    height: 200px
+    border: 1px solid #eee
+    background: #fbfbfb
+    overflow-y: scroll
+    font-size: 12px
+    list-style-position: inside
+    list-style: none
+    padding: 0
+    margin: 0px
+    margin-bottom: 15px
+
+  #spotify-search ul li
+    margin: 0 0 10px
+    cursor: pointer
+    
+  #chat-container ul
+    width: 100%
+    height: 200px
+    border: 1px solid #eee
+    background: #fbfbfb
+    overflow-y: scroll
+    font-size: 12px
+    list-style-position: inside
+    list-style: none
+    padding: 0
+    margin: 0px
+    margin-bottom: 15px
+
+  #chat-container ul li
+    margin: 0 0 10px
+
+  #message
+    width: 380px
+    margin-left: 0px
+    margin-bottom: 25px
+
+.hasCountdown
+  margin: 0 auto
+  width: 25%
+
+.countdown_rtl
+  direction: rtl
+
+.countdown_holding span
+  background-color: #ccc
+
+.countdown_row
+  clear: both
+  width: 100%
+  padding: 0px 2px
+  text-align: center
+
+.countdown_show1 .countdown_section
+  width: 98%
+
+.countdown_show2 .countdown_section
+  width: 48%
+
+.countdown_show3 .countdown_section
+  width: 32.5%
+
+.countdown_show4 .countdown_section
+  width: 24.5%
+
+.countdown_show5 .countdown_section
+  width: 19.5%
+
+.countdown_show6 .countdown_section
+  width: 16.25%
+
+.countdown_show7 .countdown_section
+  width: 14%
+
+.countdown_section
+  display: block
+  float: left
+  font-size: 75%
+  text-align: center
+
+.countdown_amount
+  font-size: 200%
+
+.countdown_descr
+  display: block
+  width: 100%
+

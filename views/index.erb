@@ -1,0 +1,212 @@
+    <h2 class="title">Spotify Water Cooler</h2><br/>
+
+    <div id="spotify-search" class="photo">
+      <!-- <img src="<%= %>"> -->
+      <p><input id="search" placeholder="Search for songs">&nbsp;&nbsp;&nbsp; <button id="search-button" type="button">Find Songs!</button></p>
+    	<ul class="song-list" id="results"></ul>
+    </div>
+
+    
+    <span class="tagline">
+      <!-- <a href="http://<%#= @picture.photo_account.domain %>"><%#= @picture.photo_account.username %></a> from 500px -->
+    </span>
+   
+  </div>
+  <div class="clear"></div>
+</div>
+
+<!-- <div class="container_12 borders">
+  <div class="grid_12 center">
+    <h3>Time Remaining</h3>
+    <div id="time-remaining"></div>
+  </div>
+  <div class="clear"></div>
+</div> -->
+
+<div class="container_12 borders">
+  <div class="grid_12 center" id="what-to-do">
+    <div id="chat-container" style="display:none;">
+      <ul>
+        <!-- <li>(<small><%= Time.now.strftime("%I:%M") %></small>) <strong>Somebody &mdash;</strong>What's Up!!!</li> -->
+      </ul>
+      <div id="chat">
+        <input id="message" name="message" type="text" placeholder="Enter your message" />
+        <input id="send-message" type="submit" value="Send" />
+      </div>
+    </div>
+    <div id="chat-login">
+      <h3>And then...</h3>
+      <div class="grid_6 alpha right">
+        <!-- <h4>Join the Chat</h4> -->
+        <div id="chat-login">
+          <input id="login-nick" name="login-nick" type="text">
+          <input type="submit" id="set-nick" value="Join">
+        </div>
+      </div>
+      <div class="grid_6 omega left">
+        <h4>Call &amp; Talk</h4>
+        <!-- <a href="#" id="call">Call</a> -->
+        <a href="#" id="call"><img src="/images/call_button.jpg" alt="Call" height="35px" width="35px"></a>
+
+        <!-- <a href="#" id="hangup" style="display:none">Hang up</a> -->
+        <a href="#" id="hangup"><img src="/images/hang_up_button.jpeg" alt="Call" height="35px" width="35px"></a>
+      </div>
+    </div>
+    <div class="clear"></div>
+
+<script type="text/javascript" src="http://static.twilio.com/libs/twiliojs/1.0/twilio.min.js"></script>
+<script type="text/javascript" src="/js/jquery.countdown.min.js"></script>
+<script type="text/javascript" charset="utf-8">
+  function dosomething() { location.reload(true); }
+
+  $(document).ready(function() {
+    
+      function trimCrap(line) {
+          return (typeof line == 'string') ? $.trim(line).replace(/ \W /gi, ' ').replace(/\s+/gi, ' ') : line;
+      };
+        
+      // var typingTimer;                //timer identifier
+      // var doneTypingInterval = 7000;  //time in ms, 5 second for example
+
+      //on keyup, start the countdown
+      // $('#search').keyup(function(){
+      //     typingTimer = setTimeout(doneTyping, doneTypingInterval);
+      // });
+      // 
+      // //on keydown, clear the countdown 
+      // $('#search').keydown(function(){
+      //     clearTimeout(typingTimer);
+      // });
+      
+      $("#search-button").click(doneTyping);
+
+      //user is "finished typing," do something
+      function doneTyping () {
+          tracks = $.map($.unique($('#search').val().split('\n')), function(track) {
+          			return /\w/.exec(track) ? trimCrap(track) : null; 
+          });
+          
+          var result, results = [], resultsCount = 0, foundResultsCount = 0, track, spotifyTracks;
+          
+          $.spotifydata('search', tracks, function lambda(data) {
+      			result = {};
+      			result['info'] = data.info;
+      			if (data.tracks.length > 0) {
+      			  
+      			  apiResults = $.spotifydata('filter', data.tracks, 'US', 10);
+      				result['track'] = apiResults[0];
+      				spotifyTracks = data.tracks.slice(0,9);
+      				
+      				if (!result.track) {
+      					result['unavailableTrack'] = data.tracks[0];
+      				}
+      				result['result'] = data.tracks.indexOf(result.track) + 1;
+      			} else {
+      				var altQuery = result.info.query.replace(/(\(|\[).+(\)|\])/,'');
+
+      				if (altQuery != result.info.query) {
+      					$.spotifydata('search', altQuery, lambda);
+      				}
+      			}
+      			results[resultsCount++] = result;
+      			result['found'] = !!result.track;
+      			if (result.track) {
+      				foundResultsCount++;
+      			};
+            $("#spotify-search ul").html('');
+            
+            $.each(spotifyTracks, function(index, val) {
+              html = "<li class='spotify-track' id='" + val.href +  "'<span><strong>" + val.artists[0].name + ": </strong><i>" + val.name + "</i></span></li>";
+              $("#spotify-search ul").append(html);
+            });
+            
+            
+      		})
+          
+          
+      };
+      
+      $(".spotify-track").live("click", function(event) {
+        // Act on the event
+        console.log($(this).attr('id'));
+        
+        $.get('/add_track', {spotify_url: $(this).attr('id')}, function(data, textStatus, xhr) {
+          //optional stuff to do after success
+          console.log("success");
+        });
+        
+        
+        
+      });
+      
+      $('#love').click(function(e) {
+        e.preventDefault();
+        var love = $(this);
+        if (love.attr('href') == '#') { return false; }
+        $.post(love.attr('href'), function(data) {
+          love.attr('href', '#');
+          love.fadeOut('fast', function() {
+            love.find('span').html(data.count);
+            love.fadeIn('fast');
+          });
+        });
+        });
+
+      $('#hangup').hide();
+
+      $('#call').click(function(e) {
+        e.preventDefault();
+        call();
+        $(this).hide();
+        $('#hangup').show();
+        $('#chat-login grid_6.alpha.right').hide();
+      });
+
+      $('#hangup').click(function(e) {
+        e.preventDefault();
+        hangup();
+        $(this).hide();
+        $('#call').show();
+      });
+
+
+  var conversation = $("#chat-container ul");
+  var nickname = null;
+	var subscription = client.subscribe('/chat', function(message) {
+	  console.log("MESSAGE RECEIVED");
+	  console.log(message);
+	  conversation.append('<li>(<small>' + message.cleanTime + '</small>) <strong>' + message.nick + ' &mdash; </strong>' + message.msg + '</li>');
+  	conversation.scrollTop(999999); // Hack: autoscroll down to last message
+	});
+
+	$('#set-nick').click(function(event) {
+	 nickname =  $('#login-nick').val();
+	 $('#chat-login').hide();
+   $('#chat-container').show();
+   $('#what-to-do').removeClass('center');
+	});
+
+	$('#send-message').click(function(event) {
+	  picture_id = $('.photo').attr('id');
+	  date = new Date
+	  cleanDate = date.getHours() + ':' + date.getMinutes();
+	  msgDate = date.getHours() + ':' + date.getMinutes();
+	  message = { picture_id: picture_id, nick: nickname, cleanTime: cleanDate, time: date, msg: $('#message').val() };
+    client.publish('/chat', message);
+    $('#message').val('').focus();
+	});
+
+
+  });
+
+  Twilio.Device.setup('<%= @token %>');
+  var connection;
+  function call() {
+    connection = Twilio.Device.connect();
+  }
+  
+  function hangup() {
+    connection.disconnect();
+  }
+</script>
+

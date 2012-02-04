@@ -1,0 +1,40 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    builder (3.0.0)
+    ffi (1.0.11)
+    hallon (0.12.0)
+      ref (~> 1.0)
+      spotify (~> 10.3.0)
+    json (1.6.5)
+    jwt (0.1.4)
+      json (>= 1.2.4)
+    multi_json (1.0.4)
+    rack (1.4.1)
+    rack-protection (1.2.0)
+      rack
+    ref (1.0.0)
+    sass (3.1.13)
+    shotgun (0.9)
+      rack (>= 1.0)
+    sinatra (1.3.2)
+      rack (>= 1.3.6, ~> 1.3)
+      rack-protection (~> 1.2)
+      tilt (>= 1.3.3, ~> 1.3)
+    spotify (10.3.0)
+      ffi (>= 1.0.11, ~> 1.0)
+    tilt (1.3.3)
+    twilio-ruby (3.5.1)
+      builder (>= 2.1.2)
+      jwt (>= 0.1.2)
+      multi_json (>= 1.0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  hallon
+  sass (>= 3.1.1)
+  shotgun
+  sinatra (>= 1.2.6)
+  twilio-ruby
