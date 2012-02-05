@@ -5,29 +5,16 @@
       <p><input id="search" placeholder="Search for songs">&nbsp;&nbsp;&nbsp; <button id="search-button" type="button">Find Songs!</button></p>
     	<ul class="song-list" id="results"></ul>
     </div>
-
-    
-    <span class="tagline">
-      <!-- <a href="http://<%#= @picture.photo_account.domain %>"><%#= @picture.photo_account.username %></a> from 500px -->
-    </span>
    
   </div>
   <div class="clear"></div>
 </div>
 
-<!-- <div class="container_12 borders">
-  <div class="grid_12 center">
-    <h3>Time Remaining</h3>
-    <div id="time-remaining"></div>
-  </div>
-  <div class="clear"></div>
-</div> -->
 
 <div class="container_12 borders">
   <div class="grid_12 center" id="what-to-do">
     <div id="chat-container" style="display:none;">
       <ul>
-        <!-- <li>(<small><%= Time.now.strftime("%I:%M") %></small>) <strong>Somebody &mdash;</strong>What's Up!!!</li> -->
       </ul>
       <div id="chat">
         <form id="chat-form">
@@ -69,19 +56,6 @@
       function trimCrap(line) {
           return (typeof line == 'string') ? $.trim(line).replace(/ \W /gi, ' ').replace(/\s+/gi, ' ') : line;
       };
-        
-      // var typingTimer;                //timer identifier
-      // var doneTypingInterval = 7000;  //time in ms, 5 second for example
-
-      //on keyup, start the countdown
-      // $('#search').keyup(function(){
-      //     typingTimer = setTimeout(doneTyping, doneTypingInterval);
-      // });
-      // 
-      // //on keydown, clear the countdown 
-      // $('#search').keydown(function(){
-      //     clearTimeout(typingTimer);
-      // });
       
       $("#search-button").click(doneTyping);
 
@@ -143,19 +117,6 @@
         
         
       });
-      
-      $('#love').click(function(e) {
-        e.preventDefault();
-        var love = $(this);
-        if (love.attr('href') == '#') { return false; }
-        $.post(love.attr('href'), function(data) {
-          love.attr('href', '#');
-          love.fadeOut('fast', function() {
-            love.find('span').html(data.count);
-            love.fadeIn('fast');
-          });
-        });
-        });
 
       $('#hangup').hide();
 

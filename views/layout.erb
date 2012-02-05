@@ -10,10 +10,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link rel="stylesheet" href="/stylesheets/960.css">
 	<link rel="stylesheet" href="/stylesheets/style.css">
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-  <script type="text/javascript" src="http://use.typekit.com/zog6jgb.js"></script>
-  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-	<script src="/js/libs/modernizr-2.0.6.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 	<script src="/js/faye-browser-min.js"></script>
 	<script src="/js/jquery-spotifydata.js"></script>
 	<script type="text/javascript">
@@ -31,28 +28,12 @@
         <h1 class="tk-calluna italic"><a href="/">Spotify Water Cooler</a></h1>
       </div>
       <div class="grid_6 floatright">
-        <!-- <%# unless env['warden'].authenticated? %>
-          <a href="/sign_up">Sign up</a> or <a href="/login">Login</a>
-        <%# else %>
-          <%# if env['warden'].user.photo_accounts.first.nil? %>
-            <a href="/500px">Add your photos</a>
-          <%# else %>
-            <a href="/500_select">+ Add Your Photos</a>
-          <%# end %>
-          or <a href="/logout">Logout</a>
-        <%# end %> -->
+        
       </div>
       <div class="clear"></div>
     </div>
 	</header>
-  <%# unless env['warden'].authenticated? %>
-    <!-- <div class="container_12">
-      <div class="grid_3 push_9" id="banner">
-        <a href="/sign_up">Sign up</a> and start learning how to improve your photography.
-      </div>
-      <div class="clear"></div>
-    </div> -->
-  <%# end %>
+
   <div id="main" role="main">
     <div class="container_12 borders" id="main-container">
       <div class="grid_12">
@@ -70,11 +51,6 @@
 
 	</footer>
 </div> <!--! end of #container -->
-
-<!-- scripts concatenated and minified via ant build script-->
-<script src="/js/plugins.js"></script>
-<script src="/js/script.js"></script>
-<!-- end scripts-->
 
 </body>
 </html>
