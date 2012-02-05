@@ -1,8 +1,15 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    bond (0.4.1)
     builder (3.0.0)
+    chunky_png (1.2.5)
+    compass (0.11.5)
+      chunky_png (~> 1.2)
+      fssm (>= 0.2.7)
+      sass (~> 3.1)
     ffi (1.0.11)
+    fssm (0.2.7)
     hallon (0.12.0)
       ref (~> 1.0)
       spotify (~> 10.3.0)
@@ -13,10 +20,18 @@ GEM
     rack (1.4.1)
     rack-protection (1.2.0)
       rack
-    ref (1.0.0)
-    sass (3.1.13)
-    shotgun (0.9)
+    rack-test (0.6.1)
       rack (>= 1.0)
+    ref (1.0.0)
+    ripl (0.6.1)
+      bond (~> 0.4.0)
+    ripl-multi_line (0.3.0)
+      ripl (>= 0.3.6)
+    ripl-rack (0.2.0)
+      rack (>= 1.0)
+      rack-test (>= 0.5)
+      ripl (>= 0.3.5)
+    sass (3.1.13)
     sinatra (1.3.2)
       rack (>= 1.3.6, ~> 1.3)
       rack-protection (~> 1.2)
@@ -24,6 +39,11 @@ GEM
     spotify (10.3.0)
       ffi (>= 1.0.11, ~> 1.0)
     tilt (1.3.3)
+    tux (0.3.0)
+      ripl (>= 0.3.5)
+      ripl-multi_line (>= 0.2.4)
+      ripl-rack (>= 0.2.0)
+      sinatra (>= 1.2.1)
     twilio-ruby (3.5.1)
       builder (>= 2.1.2)
       jwt (>= 0.1.2)
@@ -33,8 +53,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  compass
   hallon
-  sass (>= 3.1.1)
-  shotgun
-  sinatra (>= 1.2.6)
+  sinatra (= 1.3.2)
+  tux
   twilio-ruby

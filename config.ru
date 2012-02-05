@@ -2,15 +2,9 @@ require "rubygems"
 require "bundler"
 Bundler.require
 
-set :root, File.dirname(__FILE__)
-set :views, File.dirname(__FILE__) + "/views"
-set :public, File.dirname(__FILE__) + "/public"
-
-use Rack::Session::Cookie, :secret => 'oiauf98asdhkjbfdsf87ds'
-use Rack::MethodOverride
-
 require 'socket'
 
+# Local IP solution from here: http://coderrr.wordpress.com/2008/05/28/get-your-local-ip-address/
 def local_ip
   orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true  # turn off reverse DNS resolution temporarily
 
@@ -21,12 +15,13 @@ def local_ip
 ensure
   Socket.do_not_reverse_lookup = orig
 end
-
 LOCAL_IP = local_ip
 
-use Rack::Static, :urls => [ '/images', '/js' ], :root => "public"
 require "./app.rb"
 
-#map '/' do
-  run MainApp
-#end
+configure do
+  set :scss, {:style => :compact, :debug_info => false}
+  Compass.add_project_configuration(File.join(Sinatra::Application.root, 'config', 'compass.rb'))
+end
+
+run MainApp
