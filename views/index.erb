@@ -30,18 +30,23 @@
         <!-- <li>(<small><%= Time.now.strftime("%I:%M") %></small>) <strong>Somebody &mdash;</strong>What's Up!!!</li> -->
       </ul>
       <div id="chat">
-        <input id="message" name="message" type="text" placeholder="Enter your message" />
-        <input id="send-message" type="submit" value="Send" />
+        <form id="chat-form">
+          <input id="message" name="message" type="text" placeholder="Enter your message" />
+          <input id="send-message" type="submit" value="Send" />
+        </form>
       </div>
     </div>
     <div id="chat-login">
-      <h3>And then...</h3>
+      <h3>sshhhh.... ;)</h3>
       <div class="grid_6 alpha right">
         <!-- <h4>Join the Chat</h4> -->
-        <div id="chat-login">
-          <input id="login-nick" name="login-nick" type="text">
-          <input type="submit" id="set-nick" value="Join">
-        </div>
+        
+        <form id="login-form">
+          <div id="chat-login">
+            <input id="login-nick" name="login-nick" type="text">
+            <input type="submit" id="set-nick" value="Join">
+          </div>
+        </form>
       </div>
       <div class="grid_6 omega left">
         <h4>Call &amp; Talk</h4>
@@ -185,8 +190,27 @@
    $('#chat-container').show();
    $('#what-to-do').removeClass('center');
 	});
+	
+	$('#login-form').bind('submit',function(event) {
+	 event.preventDefault();  
+	 nickname =  $('#login-nick').val();
+	 $('#chat-login').hide();
+   $('#chat-container').show();
+   $('#what-to-do').removeClass('center');
+	});
 
 	$('#send-message').click(function(event) {
+	  picture_id = $('.photo').attr('id');
+	  date = new Date
+	  cleanDate = date.getHours() + ':' + date.getMinutes();
+	  msgDate = date.getHours() + ':' + date.getMinutes();
+	  message = { picture_id: picture_id, nick: nickname, cleanTime: cleanDate, time: date, msg: $('#message').val() };
+    client.publish('/chat', message);
+    $('#message').val('').focus();
+	});
+	
+	$('#chat-form').bind('submit',function(event) {
+	  event.preventDefault();
 	  picture_id = $('.photo').attr('id');
 	  date = new Date
 	  cleanDate = date.getHours() + ':' + date.getMinutes();
