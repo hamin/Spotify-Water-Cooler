@@ -1,0 +1,22 @@
+li.spotify-track {
+  margin: 0 0 10px;
+  cursor: pointer; 
+}
+
+#chat-container ul {
+  width: 100%;
+  height: 200px;
+  border: 1px solid #eeeeee;
+  background: #fbfbfb;
+  overflow-y: scroll;
+  font-size: 12px;
+  list-style-position: inside;
+  list-style: none;
+  padding: 0;
+  margin: 0px;
+  margin-bottom: 15px; 
+}
+
+#chat-container ul li { margin: 0 0 10px; }
+
+#message{ width: 90%; }  

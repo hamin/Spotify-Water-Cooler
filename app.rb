@@ -28,7 +28,10 @@ class MainApp < Sinatra::Base
     state_changed = false
     PLAYLIST.on(:playlist_state_changed) { state_changed = true }
     HALLON_SESSION.wait_for { state_changed && ! PLAYLIST.pending? }
-    puts "DONE BABY!!!"
+    # puts PLAYLIST.tracks.map{|t| {:artist => (t.artist.nil? ? nil : t.artist.name), :name => t.name}}
+    # playlist_json = PLAYLIST.tracks.map{|t| {:artist => (t.artist.nil? ? nil : t.artist.name), :name => t.name}}.to_json
+    # JSON.parse playlist_json
+    puts "OK"
   end
 
   post '/twilio' do
