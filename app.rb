@@ -19,6 +19,7 @@ class MainApp < Sinatra::Base
     capability = Twilio::Util::Capability.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     capability.allow_client_outgoing ENV['TWILIO_APP_ID']
     @token = capability.generate
+    @playlist_tracks = playlist_tracks = PLAYLIST.tracks.map{|t| {:playlist_index => t.index , :artist => (t.artist.nil? ? nil : t.artist.name), :name => t.name}}.sort_by{|h| h[:playlist_index]}
     erb :index
   end
   
@@ -28,10 +29,11 @@ class MainApp < Sinatra::Base
     state_changed = false
     PLAYLIST.on(:playlist_state_changed) { state_changed = true }
     HALLON_SESSION.wait_for { state_changed && ! PLAYLIST.pending? }
-    # puts PLAYLIST.tracks.map{|t| {:artist => (t.artist.nil? ? nil : t.artist.name), :name => t.name}}
-    # playlist_json = PLAYLIST.tracks.map{|t| {:artist => (t.artist.nil? ? nil : t.artist.name), :name => t.name}}.to_json
-    # JSON.parse playlist_json
-    puts "OK"
+    
+    content_type(:json)
+    playlist_tracks = PLAYLIST.tracks.map{|t| {:playlist_index => t.index , :artist => (t.artist.nil? ? nil : t.artist.name), :name => t.name}}.sort_by{|h| h[:playlist_index]}
+    puts playlist_tracks
+    playlist_tracks.to_json    
   end
 
   post '/twilio' do
