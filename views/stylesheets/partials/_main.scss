@@ -19,4 +19,14 @@ li.spotify-track {
 
 #chat-container ul li { margin: 0 0 10px; }
 
-#message{ width: 90%; }  
+#message{ width: 90%; }
+
+.track-container{ display: block; }
+
+.track-image{ float: left; }
+
+.track-info{
+  float: left;
+  padding-top: 20px;
+  padding-left: 20px;
+}  

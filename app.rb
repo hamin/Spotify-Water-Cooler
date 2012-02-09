@@ -19,7 +19,14 @@ class MainApp < Sinatra::Base
     capability = Twilio::Util::Capability.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     capability.allow_client_outgoing ENV['TWILIO_APP_ID']
     @token = capability.generate
-    @playlist_tracks = playlist_tracks = PLAYLIST.tracks.map{|t| {:playlist_index => t.index , :artist => (t.artist.nil? ? nil : t.artist.name), :name => t.name}}.sort_by{|h| h[:playlist_index]}
+    @playlist_tracks = PLAYLIST.tracks.map do |t| 
+      {
+        :playlist_index => t.index , 
+        :artist => t.artist.nil? ? nil : t.artist.name, 
+        :name => t.name,
+        :image_url => t.album.nil? ? nil : t.album.cover(false).to_url
+      }
+    end.compact.sort_by{|h| h[:playlist_index]}
     erb :index
   end
   
