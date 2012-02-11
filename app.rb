@@ -35,15 +35,21 @@ class MainApp < Sinatra::Base
   
   get "/add_track" do
     t = Hallon::Track.new( params[:spotify_url] )
-    PLAYLIST.insert(0, t)
+    playlist = HALLON_SESSION.container.contents.find{|p| p.name == params[:playlist_name]}
+    playlist.insert(0, t)
     state_changed = false
-    PLAYLIST.on(:playlist_state_changed) { state_changed = true }
-    HALLON_SESSION.wait_for { state_changed && ! PLAYLIST.pending? }
+    playlist.on(:playlist_state_changed) { state_changed = true }
+    HALLON_SESSION.wait_for { state_changed && ! playlist.pending? }
+    playlist_tracks = playlist.tracks.map do |t| 
+      {
+        :playlist_index => t.index , 
+        :artist => t.artist.nil? ? nil : t.artist.name, 
+        :name => t.name,
+        :image_url => t.album.nil? ? nil : t.album.cover(false).to_url
+      }
+    end.compact.sort_by{|h| h[:playlist_index]}
     
-    content_type(:json)
-    playlist_tracks = PLAYLIST.tracks.map{|t| {:playlist_index => t.index , :artist => (t.artist.nil? ? nil : t.artist.name), :name => t.name}}.sort_by{|h| h[:playlist_index]}
-    puts playlist_tracks
-    playlist_tracks.to_json    
+    partial(:playlist_tracks, :locals => {:tracks => playlist_tracks})  
   end
   
   get "/change_playlist" do

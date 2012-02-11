@@ -48,14 +48,10 @@ $(document).ready(function() {
   }); // End of search-form bind
   
   $("#search-results li.spotify-track").live("click", function(event) {
-    $.get('/add_track', {spotify_url: $(this).attr('id')}, function(data, textStatus, xhr) {
+    playlistName = $("#current-playlist").val();
+    $.get('/add_track', {spotify_url: $(this).attr('id'), playlist_name: playlistName}, function(data, textStatus, xhr) {
       //optional stuff to do after success
-      $("#playlist-tracks").html('');
-      $.each(data, function(index, val) {
-        this.innerHTML = this + " is the element, " + index + " is the position";
-        html = "<li class='spotify-track' id='pltrack-" + val.playlist_index +  "'<span><strong>" + val.artist + ": </strong><i>" + val.name + "</i></span></li>";
-        $("#playlist-tracks").append(html);
-      });
+      $("#playlist-tracks").html(data);
     }); 
   });
   
