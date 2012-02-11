@@ -5,3 +5,5 @@ gem "compass"
 gem 'twilio-ruby'
 gem 'hallon'
 gem 'racksh'
+gem 'faye'
+gem 'thin'

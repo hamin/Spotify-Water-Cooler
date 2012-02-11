@@ -17,7 +17,7 @@ class MainApp < Sinatra::Base
   end
 
   get "/" do
-    @local_ip = LOCAL_IP
+    @host_with_port = request.host_with_port
     capability = Twilio::Util::Capability.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     capability.allow_client_outgoing ENV['TWILIO_APP_ID']
     @token = capability.generate

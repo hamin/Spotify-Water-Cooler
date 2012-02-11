@@ -15,7 +15,7 @@
     <script src="/js/faye-browser-min.js"></script>
     <script type="text/javascript">
         Twilio.Device.setup('<%= @token %>');
-  	    var client = new Faye.Client("http://<%= @local_ip %>:5222/faye", {
+  	    var client = new Faye.Client("http://<%= @host_with_port %>/faye", {
   	        timeout: 120
   	    });
   	</script>
