@@ -52,7 +52,7 @@ The app will be viewable at `http://localhost:3000`
 
 ![Screenshot 1](https://github.com/hamin/Spotify-Water-Cooler/raw/master/screenshot1.png)
 
-![Screenshot 2]https://github.com/hamin/Spotify-Water-Cooler/raw/master/screenshot2.png)
+![Screenshot 2](https://github.com/hamin/Spotify-Water-Cooler/raw/master/screenshot2.png)
 
 ## Powered By ##
 ![Spotify logo](http://cf.scdn.co/i/press/people/spotify_logo.pdf)
