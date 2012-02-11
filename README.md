@@ -16,8 +16,8 @@ Hmmm...joined the chat a bit late and wanna know what people were talking about?
 These instructions have been written for OS X.
 
 ### Pre-requisites ###
-  * [Spotify API Key](http://foobar.com) SOmeting
-  * [TWILIO API Key](http://twilio.com) Something  
+  * [Spotify API Key](http://developer.spotify.com/en/libspotify/overview/) Donwload libspotify and your app key
+  * [TWILIO Client API Key](http://www.twilio.com/api/client) Sign up, its SUPER easy!  
   * [Ruby](http://www.ruby-lang.org/) 1.9. Use [RVM](http://rvm.beginrescueend.com/) to manage your Ruby installations. It's good.
   * [Rubygems](http://rubygems.org/)
   * [Git](http://git-scm.com/)
