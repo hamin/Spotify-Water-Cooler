@@ -1,35 +1,27 @@
-# Sinatra / Heroku / HTML5 Boilerplate / 960 Grid System starter app
+# Spotify Water Cooler - Killing Productivity...one beat at a time!
 
-A very basic [Sinatra](http://www.sinatrarb.com/) application skeleton for deployment to [Heroku](http://heroku.com) using [HTML5 Boilerplate](http://html5boilerplate.com/) and the [960 Grid System](http://960.gs) in the view.
 
-The skeleton is designed as a starting point for rapid prototyping, with the intention of providing something that you can hack on and deploy to Heroku very quickly. I have included the tools that I use for these purposes. I would not necessarily use this as a starting point for a production-ready application, although there is no reason why you couldn't.
+## Winner of API Hackday NYC 2012 ##
+
+![ApiHackday logo](http://209.114.47.122/wp-content/images/apihackday_logo.png)
+
+Do you love Spotify? Do you have Spotify running on a computer in your office or shared space that blasts awesome music all the time? Are you tired of having to physically or remotely go to the computer to manage the playlists on Spotify? Well fear not... Spotify Water Cooler is here!
+
+Search songs on Spotify and add them to yoour playlists being played! But this is not just to get your groove on, its a water cooler, chat with your friends, colleagues, frienemies, associates, & fellow sociopaths while you groove and choose to to groove to. Chat either with the built in chat or use voice chat in your browser powered by the awesome Twilio Voice Chat api all in your browser.
+
+Hmmm...joined the chat a bit late and wanna know what people were talking about? TOO BAD! Real life water coolers don't have chat logs and neither do we. Don't worry, noone is talking about you behind your back *wink wink*.
 
 ## Installation and usage ##
 
 These instructions have been written for OS X.
 
 ### Pre-requisites ###
-    
-  * [Ruby](http://www.ruby-lang.org/) 1.8.7 or 1.9. Use [RVM](http://rvm.beginrescueend.com/) to manage your Ruby installations. It's good.
+  * [Spotify API Key](http://foobar.com) SOmeting
+  * [TWILIO API Key](http://twilio.com) Something  
+  * [Ruby](http://www.ruby-lang.org/) 1.9. Use [RVM](http://rvm.beginrescueend.com/) to manage your Ruby installations. It's good.
   * [Rubygems](http://rubygems.org/)
   * [Git](http://git-scm.com/)
   * The [Bundler](http://rubygems.org/gems/bundler) gem. Install with 'gem install bundler'.
-
-### Download ###
-
-Use the zip / tarball link above, or:
-
-    $ git clone git://github.com/froots/sinatra-heroku-boilerplate.git
-    $ mv sinatra-heroku-boilerplate [your-app-name]
-    $ cd [your-app-name]
-    
-### Initialise Git ###
-
-You do not need to initialise git if you used git to download the project. If you used the zip / tarball method, then you will need to initialise git for your project. In your project directory:
-
-    $ git init
-    $ git add .
-    $ git commit -m "Initial commit"
     
 ### Install dependencies ###
 
@@ -41,40 +33,37 @@ This will install gems for Sinatra, HAML/SASS, DataMapper, and various other dep
 
 ### Run locally ###
 
-Bundler will have installed the latest version of [Shotgun](/rtomayko/shotgun), an application-reloading version of rackup designed for local development.
-
 To run the application:
 
-    $ shotgun
+    $ thin start
     
-The app will be viewable at `http://localhost:9393`
+The app will be viewable at `http://localhost:3000`
 
-### Heroku setup ###
 
-Install the Heroku gem
+## Powered By ##
+![Spotify logo](http://cf.scdn.co/i/press/people/spotify_logo.pdf)
 
-    $ gem install heroku
+![Twilio logo](http://www.twilio.com/packages/company/img/logos_downloadable_round.png)
 
-[Sign up](https://api.heroku.com/signup) for Heroku if you don't have an account.
+### License ###
 
-Setup your SSH keys to allow access to Heroku if you have not already done so. Details of how to do this can be found on the [Heroku website](http://docs.heroku.com/quickstart#getting-your-app-on-heroku).
+(The MIT License)
 
-Create the application:
+Copyright (c) 2012 Haris Amin
 
-    $ heroku create [app-name]
-    
-    Creating [app-name].... done
-    Created http://[app-name].heroku.com/ | git@heroku.com:[app-name].git
-    Git remote heroku added
-    
-### Deploy ###
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the 'Software'), to deal in
+the Software without restriction, including without limitation the rights to use,
+copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
+Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
 
-To deploy the app, commit all changes and:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-    $ git push heroku master
-
-Heroku will install gem dependencies specified in Gemfile and start the app.
-
-### Development ###
-
-Views are created in HAML and must be created in the `/views` directory. CSS is written in SASS and must be created in the `/views/css` directory. These will be accessible at `/css/[sheet].css`. JavaScripts, images and other static files are kept in the `/public` directory.
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
