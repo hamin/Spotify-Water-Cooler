@@ -6,8 +6,10 @@ Dir["./models/**/*.rb"].each { |model| require model }
 
 # Routes
 require 'erb'
+require './partials'
 
 class MainApp < Sinatra::Base
+  helpers Sinatra::Partials
   
   get '/stylesheets/:name.css' do
     content_type 'text/css', :charset => 'utf-8'

@@ -28,7 +28,7 @@
    	<h2>Current Playlist</h2>
 		<p>
 		  <ul id="playlist-tracks" class="unstyled">
-        <%= erb :_playlist_tracks %>
+        <%= partial(:playlist_tracks, :locals => {:tracks => @playlist_tracks}) %>
 		  </ul>
 		</p>
 	</div>
