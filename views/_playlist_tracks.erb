@@ -1,0 +1,12 @@
+<% @playlist_tracks.each do |t| %>
+  <li class='spotify-track' id="pltrack-<%= t[:playlist_index] %>">
+    <div class="track-container clearfix">
+      <div class="track-image">
+         <img src="<%= t[:image_url] %>" width="64px" height="54px"/>
+       </div>  
+       <div class="track-info">
+         <strong><%= t[:artist] %>:</strong> <i><%= t[:name] %></i>
+       <div>
+    </div>
+  </li>
+<% end %>
