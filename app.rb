@@ -18,9 +18,14 @@ class MainApp < Sinatra::Base
 
   get "/" do
     @host_with_port = request.host_with_port
-    capability = Twilio::Util::Capability.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    capability.allow_client_outgoing ENV['TWILIO_APP_ID']
-    @token = capability.generate
+    
+    if ENV['TWILIO_ACCOUNT_SID'] && ENV['TWILIO_AUTH_TOKEN'] && ENV['TWILIO_APP_ID']
+      capability = Twilio::Util::Capability.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+      capability.allow_client_outgoing ENV['TWILIO_APP_ID']
+      @token = capability.generate
+    else  
+      @token = nil
+    end  
     @all_playlists = HALLON_SESSION.container.contents
     @playlist_tracks = @all_playlists.first.tracks.map do |t| 
       {
