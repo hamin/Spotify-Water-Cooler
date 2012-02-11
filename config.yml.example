@@ -1,0 +1,8 @@
+HALLON_APPKEY: 'spotify_appkey.key' # Spotify API Key
+HALLON_USERNAME: 'harisamin' # Spotify username
+HALLON_PASSWORD: 'somepassword' # Spotify password
+
+TWILIO_ACCOUNT_SID: 'something'
+TWILIO_AUTH_TOKEN: 'something'
+TWILIO_APP_ID: 'something'
+TWILIO_NUMBER: '+18675309' # this might not be necessary
