@@ -60,6 +60,17 @@ $(document).ready(function() {
   });
   
   
+  // Select Playlist
+  $("#current-playlist").bind('change', function(event) {
+    // Act on the event
+    playlistName = $(this).val();
+    
+    $.get('/change_playlist', {playlist_name: playlistName}, function(data, textStatus, xhr) {
+      //optional stuff to do after success
+      $("#playlist-tracks").html(data);
+    });
+  });
+  
   // Chat Stuff
   var conversation = $("#chat-container ul");
   var nickname = null;

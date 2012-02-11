@@ -26,6 +26,21 @@
  	
  	<div class="span8">
    	<h2>Current Playlist</h2>
+   	
+   	<form class="form-horizontal">
+        <fieldset>
+          <div class="control-group">
+            <div class="controls">
+              <select id="current-playlist">
+                <% @all_playlists.each do |playlist| %>
+                  <option><%= playlist.name %></option>
+                <% end %>  
+              </select>
+            </div>
+          </div>
+        </fieldset>
+    </form>
+   	
 		<p>
 		  <ul id="playlist-tracks" class="unstyled">
         <%= partial(:playlist_tracks, :locals => {:tracks => @playlist_tracks}) %>
