@@ -7,16 +7,16 @@
 
 Do you love Spotify? Do you have Spotify running on a computer in your office or shared space that blasts awesome music all the time? Are you tired of having to physically or remotely go to the computer to manage the playlists on Spotify? Well fear not... Spotify Water Cooler is here!
 
-Search songs on Spotify and add them to yoour playlists being played! But this is not just to get your groove on, its a water cooler, chat with your friends, colleagues, frienemies, associates, & fellow sociopaths while you groove and choose to to groove to. Chat either with the built in chat or use voice chat in your browser powered by the awesome Twilio Voice Chat api all in your browser.
+Search songs on Spotify and add them to your playlists being played! But this is not just to get your groove on, its a water cooler, chat with your friends, colleagues, frienemies, associates, & fellow sociopaths while you groove and choose to to groove to. Chat either with the built in chat or use voice chat in your browser powered by the awesome Twilio Voice Chat api all in your browser.
 
-Hmmm...joined the chat a bit late and wanna know what people were talking about? TOO BAD! Real life water coolers don't have chat logs and neither do we. Don't worry, noone is talking about you behind your back *wink wink*.
+Hmmm...joined the chat a bit late and wanna know what people were talking about? TOO BAD! Real life water coolers don't have chat logs and neither do we. Don't worry, no one is talking about you behind your back *wink wink*.
 
 ## Installation and usage ##
 
 These instructions have been written for OS X.
 
 ### Pre-requisites ###
-  * [Spotify API Key](http://developer.spotify.com/en/libspotify/overview/) Donwload libspotify and your app key
+  * [Spotify API Key](http://developer.spotify.com/en/libspotify/overview/) Download libspotify and your app key
   * [TWILIO Client API Key](http://www.twilio.com/api/client) Sign up, its SUPER easy!  
   * [Ruby](http://www.ruby-lang.org/) 1.9. Use [RVM](http://rvm.beginrescueend.com/) to manage your Ruby installations. It's good.
   * [Rubygems](http://rubygems.org/)
