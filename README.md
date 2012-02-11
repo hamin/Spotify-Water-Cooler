@@ -29,7 +29,16 @@ Use Bundler to install project dependencies for you:
 
     $ bundle install
 
-This will install gems for Sinatra, HAML/SASS, DataMapper, and various other dependencies if not already on your system. It will also create a Gemfile.lock file which will ensure that dependencies do not change on Heroku unless you explicitly rerun `bundle install` again.
+This will install gems and various other dependencies if not already on your system. It will also create a Gemfile.lock file which will ensure that dependencies do not change unless you explicitly rerun `bundle install` again.
+
+
+### Configure ###
+
+Copy the example config file:
+
+    $ cp config.yml.example config.yml
+
+Enter your Spotify and Twilio credentials in config.yml. Make sure to place your Spotify key (e.g. spotify_appkey.key) in the root folder of the project.
 
 ### Run locally ###
 
@@ -39,6 +48,11 @@ To run the application:
     
 The app will be viewable at `http://localhost:3000`
 
+## Screenshots ##
+
+![Screenshot 1](screenshot1.png)
+
+![Screenshot 2](screenshot2.png)
 
 ## Powered By ##
 ![Spotify logo](http://cf.scdn.co/i/press/people/spotify_logo.pdf)
